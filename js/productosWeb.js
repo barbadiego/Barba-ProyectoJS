@@ -64,10 +64,24 @@ function agregarAlCarrito(idDelProducto){
     localStorage.setItem("carrito", JSON.stringify(carrito));
     document.getElementById("sumarAlCarrito").innerHTML = carrito.length;
     
+    Toastify({
+            text: "Añadiste producto al carrito!",
+            duration: 2000,
+            gravity: "bottom",
+            position: "right",
+            style: {
+                background: "linear-gradient(to right, #fec5bb, #f8edeb, #fec5bb)",
+                color: "black",
+                border: "solid 1px black",
+            },
+    }).showToast();
+    
     precioTotal = productoEnCarrito.precio + precioTotal;
     localStorage.setItem("precioTotal", JSON.stringify(precioTotal));
     document.getElementById("sumaTotal").innerHTML = precioTotal;
-    
+
+
+
     console.log(carrito)
 }
 
