@@ -74,9 +74,9 @@ function agregarAlCarrito(idDelProducto){
     } else {
         if (carrito[indexProducto].cantidad < carrito[indexProducto].stock){
             carrito[indexProducto].cantidad++;
-            avisoPopUp("Se agregó el producto al carrito.")
+            avisoPopUp(`Se agregó producto ${carrito[indexProducto].nombre} al carrito.`)
         } else {
-            avisoPopUp("No hay stock de este producto.", "linear-gradient(to right, #000000, #f8edeb)")
+            avisoPopUp(`No hay stock del producto ${carrito[indexProducto].nombre}.`, "linear-gradient(to right, #f8edeb, #f8edeb, #f8edeb)")
         }
     }
 
@@ -126,15 +126,6 @@ function avisoPopUp(texto, color = "linear-gradient(to right, #fec5bb, #f8edeb, 
 }
 
 
-
-// function sumarCantidad(idDelProducto){
-//     const productoEnCarrito = carrito.findIndex((elemento) => {
-//         return elemento.id === idDelProducto;
-//     })
-//     carrito[productoEnCarrito].cantidad += 1;
-// }
-
-
 function productosEnModal(datos){
     let infoMostrar = ``;
     for ( let i = 0; i < datos.length; i++ ){
@@ -171,7 +162,7 @@ function removerProducto(id){
     const indiceProd = carrito.findIndex((elemento) => {
         return elemento.id === id;
     });
-    avisoPopUp(`Se eliminó ${carrito[indiceProd].nombre} del carrito`)
+    avisoPopUp(`Se eliminó ${carrito[indiceProd].nombre} del carrito`, "linear-gradient(to right, #d3d7f5, #f8edeb, #d3d7f5)")
 
     carrito.splice(indiceProd, 1)
 
