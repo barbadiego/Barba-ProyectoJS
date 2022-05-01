@@ -318,14 +318,12 @@ ul {
   font-size: 12px;
 }
 
-
-
 .listaPrincipal {
   font-weight: 600;
   cursor: pointer;
   user-select: none; }
   .listaPrincipal .listaPrincipal__titulo {
-    font-size: 14px;
+    font-size: 12px;
     transition: 0.2s; }
 
 .listaPrincipal__titulo:hover {

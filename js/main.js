@@ -9,11 +9,13 @@ const ProductoMain = [
     { id: 4, nombre: "Magnolia", precio: 1500, stock: 2, imagen: "../images/producto4.jpg"},
 ]
 
-// *******************************************
-// **************** FUNCIONES ****************
-// *******************************************
+// ********************************************
+// **************** FUNCIONES *****************
+// ********************************************
 
-// función para mostrar cards en web
+
+// Función de creación de cards.-
+// ********************************************
 generadorDeCards(ProductoMain);
 
 function generadorDeCards(productosMain){
@@ -28,16 +30,16 @@ function generadorDeCards(productosMain){
     mostrarCardsEnElHTML(cardsAcumuladas)
 }
 
-// ********************************************
-// **************** FUNCIONES *****************
-// ********************************************
 
-// agregar al carrito el producto seleccionado
+// Función para mostrar las cards generadas con function generadorDeCards() en web.-
+// ********************************************
 function mostrarCardsEnElHTML(cards){
     document.getElementById("listaDeProductosMain").innerHTML = cards;
 }
 
-// busca y filtra productos en web index.html
+
+// Busca y filtra productos en web index.html.-
+// ********************************************
 function buscarProducto(){
     const productoBuscado = document.getElementById("buscar").value.toLowerCase().trim();
     
@@ -48,7 +50,9 @@ function buscarProducto(){
     generadorDeCards(productoFiltrado)
 }
 
-// Al escribir producto en input de busqueda y presionar enter modifica el main con el producto buscado.
+
+// Al escribir producto en input de busqueda y presionar enter modifica el main con el producto buscado.-
+// ********************************************
 const inputIngresado = document.getElementById("buscar");
 inputIngresado.addEventListener("keypress", function onEvent(event) {
     if (event.key === "Enter") {

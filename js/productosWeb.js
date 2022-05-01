@@ -39,6 +39,8 @@ generadorDeCards(Productos);
 // ********************************************
 
 
+// Función de creación de cards.-
+// ********************************************
 function generadorDeCards(productosSec){
     let cardsAcumuladas = ``;
     productosSec.forEach((elementoDelArray) => {
@@ -50,23 +52,25 @@ function generadorDeCards(productosSec){
             <button class="btn btn-primary" ${elementoDelArray.stock < 1 ? 'disabled' : ''} onclick="agregarAlCarrito (${elementoDelArray.id})">${elementoDelArray.stock > 0 ? "Añadir al carrito" : 'No hay stock'}</button>
             </div>`
     });
-    // MUESTRA CARDS EN HTML
+    // *********** Llamado de function para mostrar cards en web.-
     mostrarCardsEnElHTML(cardsAcumuladas)
 }
 
 
-// Función para mostrar cards en web
+// Función para mostrar las cards generadas con function generadorDeCards() en web.-
+// ********************************************
 function mostrarCardsEnElHTML(cards){
     document.getElementById("listaDeProductosSecundaria").innerHTML = cards;
 }
 
 
-// Agrega al carrito el producto seleccionado, mostrandose la cantidad de productos y monto total del mismo.
+// Agrega al carrito el producto seleccionado y el monto del mismo.-
+// ********************************************
 function agregarAlCarrito(idDelProducto){
     const productoEnCarrito = Productos.find(Productos => Productos.id === idDelProducto)
     const indexProducto = carrito.findIndex((producto) => producto.id === idDelProducto)
 
-    
+    // *********** Valida si el producto que se agrega en carrito ya existe en el mismo.-
     if (indexProducto === -1){
         productoEnCarrito.cantidad = 1;
         carrito.push(productoEnCarrito)
@@ -80,14 +84,13 @@ function agregarAlCarrito(idDelProducto){
         }
     }
 
-    
+    // *********** Llamado de función para mostrar productos en modal.-
     productosEnModal(carrito);
-    // modificarStock(carrito);
 
     document.getElementById("sumarAlCarrito").innerHTML = cantidadProductosCart();
     localStorage.setItem("carrito", JSON.stringify(carrito));
     
-    
+    // *********** Llamado de función para modificar monto del carrito.-
     precioTotal = calcularPrecio();
     document.getElementById("sumaTotal").innerHTML = precioTotal;
     document.getElementById("sumaCartTotal").innerHTML = precioTotal;
@@ -95,6 +98,9 @@ function agregarAlCarrito(idDelProducto){
     localStorage.setItem("precioTotal", JSON.stringify(precioTotal));
 }
 
+
+// Realiza la sumatoria (O resta) de los productos que se agregan o quitan del carrito.-
+// ********************************************
 function calcularPrecio(){
     let precio = 0;
     carrito.forEach((producto) => {
@@ -103,6 +109,9 @@ function calcularPrecio(){
     return precio;
 }
 
+
+// Aumenta la cantidad de productos agregados al carrito.-
+// ********************************************
 function cantidadProductosCart(){
     let cantidad = 0;
     carrito.forEach((producto) => {
@@ -111,6 +120,8 @@ function cantidadProductosCart(){
     return cantidad;
 }
 
+
+// Function que maneja el toastify a la hora de agregar/quitar productos del carrito y aviso de falta de stock.-
 function avisoPopUp(texto, color = "linear-gradient(to right, #fec5bb, #f8edeb, #fec5bb)"){
     Toastify({
         text: texto,
@@ -126,6 +137,8 @@ function avisoPopUp(texto, color = "linear-gradient(to right, #fec5bb, #f8edeb, 
 }
 
 
+// Function para mostrar los productos agregados en carrito al modal.-
+// ********************************************
 function productosEnModal(datos){
     let infoMostrar = ``;
     for ( let i = 0; i < datos.length; i++ ){
@@ -158,6 +171,8 @@ function productosEnModal(datos){
 
 
 
+// Function para remover productos del carrito.-
+// ********************************************
 function removerProducto(id){
     const indiceProd = carrito.findIndex((elemento) => {
         return elemento.id === id;
@@ -166,10 +181,12 @@ function removerProducto(id){
 
     carrito.splice(indiceProd, 1)
 
+    // *********** Se llama a la función que muestra a productos en modal para que actualice el dom si se elimina algún producto.-
     productosEnModal(carrito);
     
     document.getElementById("sumarAlCarrito").innerHTML = cantidadProductosCart();
     
+    // *********** Se llama a función de calcular precio para restar el monto si se retira producto del carrito.-
     precioTotal = calcularPrecio();
     document.getElementById("sumaTotal").innerHTML = precioTotal;
     document.getElementById("sumaCartTotal").innerHTML = precioTotal;
@@ -179,8 +196,8 @@ function removerProducto(id){
 }
 
 
-
-// Busca y filtra productos en tiempo real en web productos.html
+// Busca y filtra productos en tiempo real en web.-
+// ********************************************
 const productoBuscado = document.getElementById("buscar")
 productoBuscado.addEventListener('input', (evt) => {buscarProducto(evt.target.value);})
 
@@ -196,6 +213,9 @@ function buscarProducto(val){
     generadorDeCards(resultadosDeBusqueda)
 }
 
+
+// Al seleccionar el nombre del producto en la parte izquierda de la web la misma filtrará las cards.-
+// ********************************************
 const elementosFiltrados = document.getElementsByClassName("btnFiltro")
 for ( let i = 0; i < elementosFiltrados.length; i++){
     elementosFiltrados[i].addEventListener('click', () => {buscarProducto(elementosFiltrados[i].getAttribute("value"))})
