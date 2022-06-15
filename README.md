@@ -1,10 +1,13 @@
 # Barba-ProyectoJS
 
 Proyecto de curso Javascript - Coderhouse. - Camada 20100
-Basado en emprendimiento real: Cambria Lingerie.
+Basado en emprendimiento real: Cambria Lingerie..
 
-Cambios realizados en esta entrega:
-- Se bloquean botones de "añadir al carrito" de productos sin stock.
-- Se realiza función para buscar productos y que actualicen en tiempo real en productos.html.
-- Se configura el carrito para que actualice en tiempo real junto a la suma de precio de los productos.
-- Se configura localStorage, tanto para la cantidad de productos como para el monto total del carrito.
+e-Commerce funcional sobre emprendimiento Cambria Lingerie.
+- Se agregaron comentarios en las funciones.
+- Se agregó array de objetos con los productos de la marca con su respectivo nombre, precio y stock disponible.
+- Se agregaron filtros de búsquedas en html main y productos.
+- Se agregaron botones de agregar al carrito y se deshabilitó de aquellos que no poseen stock para agregar.
+- Se agregó modal en carrito, en el mismo se muestra: producto agregado, cantidad, monto total y la opción de eliminar el producto que se desee quitar.
+- Toastify para avisos de: producto agregado al carrito, producto que ya no posee stock y cuando se quita producto del carro.
+- LocalStorage para guardar productos del carrito.
