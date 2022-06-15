@@ -1,12 +1,9 @@
-// ARRAY DE CARRITO
-const carrito = []
-
 // ARRAY DE PRODUCTOS
 const ProductoMain = [
-    { id: 1, nombre: "Agnes", precio: 1600, stock: 20, imagen: "../images/producto1.jpg"},
-    { id: 2, nombre: "Emma", precio: 1900, stock: 10, imagen: "../images/producto2.jpg"},
-    { id: 3, nombre: "Agnes Aqcua", precio: 1600, stock: 0, imagen: "../images/producto3.jpg"},
-    { id: 4, nombre: "Magnolia", precio: 1500, stock: 2, imagen: "../images/producto4.jpg"},
+    { id: 1, nombre: "Agnes", precio: 1600, stock: 20, imagen: "./images/producto1.jpg"},
+    { id: 2, nombre: "Emma", precio: 1900, stock: 10, imagen: "./images/producto2.jpg"},
+    { id: 3, nombre: "Agnes Aqcua", precio: 1600, stock: 0, imagen: "./images/producto3.jpg"},
+    { id: 4, nombre: "Magnolia", precio: 1500, stock: 2, imagen: "./images/producto4.jpg"},
 ]
 
 // ********************************************

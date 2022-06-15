@@ -5,7 +5,7 @@ if(localStorage.getItem('carrito') != null){
     const storageDeCarrito = JSON.parse(localStorage.getItem('carrito'));
     carrito = storageDeCarrito; 
 }
-document.getElementById("sumarAlCarrito").innerHTML = carrito.length;
+document.getElementById("sumarAlCarrito").innerHTML = cantidadProductosCart();
 
 // LOCALSTORAGE DE MONTO TOTAL DE COMPRA
 let precioTotal = 0;
@@ -14,7 +14,7 @@ if(localStorage.getItem('precioTotal') != 0){
     precioTotal = totalDelCarrito; 
 }
 document.getElementById("sumaTotal").innerHTML = precioTotal;
-
+document.getElementById("sumaCartTotal").innerHTML = precioTotal;
 
 // ARRAY DE PRODUCTOS
 const Productos = [
@@ -30,8 +30,11 @@ const Productos = [
 
 
 
-// GENERADOR DE CARDS CON INFO DE PRODUCTOS
+// LLAMADO A LA FUNCIÓN PARA QUE MUESTRE LAS CARDS DE PRODUCTOS.-
 generadorDeCards(Productos);
+
+// LLAMADO A LA FUNCIÓN PARA QUE MUESTRE LOS PRODUCTOS EN CARRITO.-
+productosEnModal(carrito);
 
 
 // ********************************************
@@ -168,7 +171,6 @@ function productosEnModal(datos){
     
     document.getElementById("mostrarModal").innerHTML = infoMostrar;
 }
-
 
 
 // Function para remover productos del carrito.-
